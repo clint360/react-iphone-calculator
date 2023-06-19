@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Button from './components/button/Button';
+import separateWithComma from './utils/separateWithComma';
 
 function App() {
   const [time, setTime] = useState(new Date());
   const [value, setValue] = useState("0");
   const [memory, setMemory] = useState(null);
   const [operator, setOperator] = useState(null);
+
+  useEffect(() => {
+    setTime(new Date());
+  }, [new Date().getMinutes()]);
 
   const handleButtonPress = content => () => {
     const num = parseFloat(value);
@@ -136,6 +141,23 @@ function App() {
 
   return (
     <div className="App">
+      <div className="top">
+        <div className="time">
+          {time
+            .getHours()
+            .toString()
+            .padStart(2, "0")}
+          :
+          {time
+            .getMinutes()
+            .toString()
+            .padStart(2, "0")}
+        </div>
+        <div className="menu">
+          <img src={menu} alt="menu" />
+        </div>
+      </div>
+      <div className="display">{separateWithComma(value)}</div>
       <div className="buttons">
         <Button
           onButtonClick={handleButtonPress}
@@ -161,6 +183,7 @@ function App() {
         <Button onButtonClick={handleButtonPress} content="." />
         <Button onButtonClick={handleButtonPress} content="=" type="operator" />
       </div>
+      <div className="bottom" />
     </div>
   );
 }
