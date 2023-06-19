@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
+import menu from "../../assets/menu.png";
 import './App.css';
 import Button from './components/button/Button';
 import separateWithComma from './utils/separateWithComma';
