@@ -1,8 +1,13 @@
 const separateWithComma = value => {
-    if (value === "0") return value;
     let output = "";
     let decimal = "";
     let isNeg = false;
+    if (value.length>7) {
+        output = parseInt(value).toExponential(3);
+        return output
+    } else {
+
+    if (value === "0") return value;
     if (value.includes(".")) {
       output = value.substring(0, value.indexOf("."));
       decimal = value.substring(value.indexOf("."));
@@ -17,7 +22,9 @@ const separateWithComma = value => {
     return isNeg
       ? "-" + parseFloat(output).toLocaleString() + decimal
       : parseFloat(output).toLocaleString() + decimal;
-  };
+  }
+}
+;
   
   export default separateWithComma;
   

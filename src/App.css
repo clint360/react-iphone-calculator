@@ -16,10 +16,12 @@
 }
 
 .display {
-  font-size: 130px;
+  font-size: 120px;
   font-weight: 300;
   margin-bottom: 20px;
   text-align: right;
+  margin-right: 20px;
+  overflow: hidden;
 }
 
 .buttons {
